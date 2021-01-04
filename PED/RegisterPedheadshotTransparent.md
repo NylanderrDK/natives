@@ -42,3 +42,18 @@ CreateThread(function()
     UnregisterPedheadshot(handle)
 end)
 ```
+
+```csharp
+int player = GetPlayerFromServerId(-1);
+int handle = RegisterPedheadshotTransparent(GetPlayerPed(player));
+
+while (!IsPedheadshotReady(handle))
+    await Delay(1);
+    
+string txd = GetPedheadshotTxdString(handle);
+
+SetNotificationTextEntry("STRING");
+AddTextComponentSubstringPlayerName("Transparent Headshot");
+DrawNotificationAward(txd, txd, 200, 0, "FM_GEN_UNLOCK");
+UnregisterPedheadshot(handle);
+```
